@@ -12,5 +12,8 @@ func _on_button_3_pressed():
 
 
 
+
 func _on_button_2_pressed():
 	$Label.text = ""
+
+#lol
