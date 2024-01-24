@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf7dbq8buaybe"]
+
+[ext_resource type="Script" path="res://about_me.gd" id="1_cnfhn"]
+
+[sub_resource type="Theme" id="Theme_b8l7v"]
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_6mqdt"]
+default_font_size = 30
+
+[node name="About Me" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cnfhn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.017
+anchor_bottom = 0.035
+offset_left = 322.0
+offset_top = 205.0
+offset_right = 772.416
+offset_bottom = 349.32
+theme = SubResource("Theme_b8l7v")
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 456.0
+offset_right = 270.0
+offset_bottom = 627.0
+theme = SubResource("Theme_6mqdt")
+text = "Show
+"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 456.0
+offset_right = 664.0
+offset_bottom = 627.0
+theme = SubResource("Theme_6mqdt")
+text = "Clear"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 830.0
+offset_top = 462.0
+offset_right = 1075.0
+offset_bottom = 633.0
+theme = SubResource("Theme_6mqdt")
+text = "Exit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
