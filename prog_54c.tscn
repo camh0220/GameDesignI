@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxgctvd0cdtdq"]
+
+[ext_resource type="Script" path="res://Prog54c.gd" id="1_ctaed"]
+
+[sub_resource type="Theme" id="Theme_lseu5"]
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_cxsv2"]
+default_font_size = 30
+
+[node name="Prog54c" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ctaed")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -175.0
+offset_top = 7.0
+offset_right = 370.0
+offset_bottom = 138.0
+theme = SubResource("Theme_lseu5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = -173.0
+offset_top = 130.0
+offset_right = 372.0
+offset_bottom = 261.0
+theme = SubResource("Theme_lseu5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = -173.0
+offset_top = 227.0
+offset_right = 372.0
+offset_bottom = 358.0
+theme = SubResource("Theme_lseu5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 731.0
+offset_top = 57.0
+offset_right = 934.0
+offset_bottom = 177.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 432.0
+offset_right = 267.0
+offset_bottom = 550.0
+theme = SubResource("Theme_cxsv2")
+text = "Calculate"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 434.0
+offset_right = 623.0
+offset_bottom = 552.0
+theme = SubResource("Theme_cxsv2")
+text = "Clear"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 790.0
+offset_top = 430.0
+offset_right = 968.0
+offset_bottom = 548.0
+theme = SubResource("Theme_cxsv2")
+text = "Exit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
