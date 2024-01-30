@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://eovccvuftefw"]
+
+[ext_resource type="Script" path="res://Prog88a.gd" id="1_ke3dn"]
+
+[sub_resource type="Theme" id="Theme_cvpmx"]
+default_font_size = 30
+
+[node name="Prog88a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 5.0
+offset_right = 2.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ke3dn")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 331.0
+offset_bottom = 93.0
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 7.0
+offset_right = 738.0
+offset_bottom = 93.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 1144.0
+offset_bottom = 498.0
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 530.0
+offset_right = 227.0
+offset_bottom = 627.0
+theme = SubResource("Theme_cvpmx")
+text = "Calculate
+"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 528.0
+offset_right = 636.0
+offset_bottom = 625.0
+theme = SubResource("Theme_cvpmx")
+text = "Clear
+"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 526.0
+offset_right = 1026.0
+offset_bottom = 623.0
+theme = SubResource("Theme_cvpmx")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
