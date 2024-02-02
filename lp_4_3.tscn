@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2lufqgvrefn2"]
+
+[ext_resource type="Script" path="res://LP4-3.gd" id="1_pup6m"]
+
+[sub_resource type="Theme" id="Theme_q38vm"]
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_l0rpb"]
+default_font_size = 30
+
+[node name="LP4-3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pup6m")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 30.0
+offset_right = 606.0
+offset_bottom = 125.0
+theme = SubResource("Theme_q38vm")
+text = "Enter the amount of eggs purchased:"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 188.0
+offset_right = 1158.0
+offset_bottom = 463.0
+theme = SubResource("Theme_q38vm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 558.0
+offset_top = 14.0
+offset_right = 1105.0
+offset_bottom = 91.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 516.0
+offset_right = 230.0
+offset_bottom = 628.0
+theme = SubResource("Theme_l0rpb")
+text = "Calculate"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 518.0
+offset_right = 636.0
+offset_bottom = 630.0
+theme = SubResource("Theme_l0rpb")
+text = "Clear"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 844.0
+offset_top = 522.0
+offset_right = 1030.0
+offset_bottom = 634.0
+theme = SubResource("Theme_l0rpb")
+text = "Exit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
