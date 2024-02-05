@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://coyxafwih5xid"]
+
+[ext_resource type="Script" path="res://prog_122a.gd" id="1_gy7yr"]
+
+[sub_resource type="Theme" id="Theme_ig4pe"]
+default_font_size = 30
+
+[node name="Prog122a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gy7yr")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 1146.0
+offset_bottom = 455.0
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 513.0
+offset_right = 198.0
+offset_bottom = 623.0
+theme = SubResource("Theme_ig4pe")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 505.0
+offset_right = 628.0
+offset_bottom = 615.0
+theme = SubResource("Theme_ig4pe")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 841.0
+offset_top = 497.0
+offset_right = 995.0
+offset_bottom = 607.0
+theme = SubResource("Theme_ig4pe")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

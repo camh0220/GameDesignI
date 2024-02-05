@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjs4i5yq1vjc0"]
+
+[ext_resource type="Script" path="res://Prog122b.gd" id="1_ct232"]
+
+[sub_resource type="Theme" id="Theme_u6i7q"]
+default_font_size = 30
+
+[node name="Prog122b" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ct232")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 471.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 503.0
+offset_right = 215.0
+offset_bottom = 621.0
+theme = SubResource("Theme_u6i7q")
+text = "Calculate"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 499.0
+offset_right = 644.0
+offset_bottom = 617.0
+theme = SubResource("Theme_u6i7q")
+text = "Clear"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 499.0
+offset_right = 1003.0
+offset_bottom = 617.0
+theme = SubResource("Theme_u6i7q")
+text = "Exit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
