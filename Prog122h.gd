@@ -9,7 +9,7 @@ func _on_button_pressed():
 		var square = num * num
 		var root = sqrt(num)
 		var cube = number * square
-		var root4 = square ** 4
+		var root4 = num ** 0.25
 		var line = str(number) + "     " + str(square) + "     " + str(root) + "     " + str(cube) + "     " + str(root4)
 		$ItemList.add_item(line)
 
