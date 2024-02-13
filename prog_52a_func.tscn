@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvbvrofsxeg7t"]
+
+[ext_resource type="Script" path="res://prog_52a_func.gd" id="1_u6ke2"]
+
+[sub_resource type="Theme" id="Theme_mqu3k"]
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_sav6a"]
+default_font_size = 30
+
+[node name="Prog52aFunc" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u6ke2")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 345.0
+offset_bottom = 120.0
+theme = SubResource("Theme_mqu3k")
+text = "Length:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 148.0
+offset_right = 347.0
+offset_bottom = 268.0
+theme = SubResource("Theme_mqu3k")
+text = "Width:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblOut" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 284.0
+offset_right = 847.0
+offset_bottom = 648.0
+theme = SubResource("Theme_mqu3k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="txtLen" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 15.0
+offset_right = 777.0
+offset_bottom = 99.0
+
+[node name="txtWid" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 263.0
+offset_top = 159.0
+offset_right = 781.0
+offset_bottom = 243.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 865.0
+offset_top = 210.0
+offset_right = 1079.0
+offset_bottom = 320.0
+theme = SubResource("Theme_sav6a")
+text = "Calculate"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 867.0
+offset_top = 361.0
+offset_right = 1081.0
+offset_bottom = 471.0
+theme = SubResource("Theme_sav6a")
+text = "Clear"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 869.0
+offset_top = 520.0
+offset_right = 1083.0
+offset_bottom = 630.0
+theme = SubResource("Theme_sav6a")
+text = "Exit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
