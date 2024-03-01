@@ -43,7 +43,7 @@ position = Vector2(163.566, -1)
 scale = Vector2(-326.133, -1)
 texture = SubResource("PlaceholderTexture2D_4o552")
 
-[node name="plt_player" parent="." groups=["Player"] instance=ExtResource("2_1m0r0")]
+[node name="plt_player" parent="." instance=ExtResource("2_1m0r0")]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(705, 191)

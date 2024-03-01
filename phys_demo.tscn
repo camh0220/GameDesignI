@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://s6svdpdfhudc"]
+
+[ext_resource type="Script" path="res://phys_demo.gd" id="1_w0krp"]
+[ext_resource type="PackedScene" uid="uid://dshwndymb5fmk" path="res://phys_ball.tscn" id="2_u5nxy"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_e24mt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elksc"]
+size = Vector2(1802, 65)
+
+[sub_resource type="Theme" id="Theme_24syf"]
+default_font_size = 0
+
+[sub_resource type="Theme" id="Theme_nw8u0"]
+default_font_size = 0
+
+[node name="phys_demo" type="Node2D"]
+script = ExtResource("1_w0krp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(491, 617)
+scale = Vector2(1800, 65.5)
+texture = SubResource("PlaceholderTexture2D_e24mt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(491, 617.5)
+shape = SubResource("RectangleShape2D_elksc")
+
+[node name="phys_ball" parent="." instance=ExtResource("2_u5nxy")]
+position = Vector2(740, 171)
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 351.0
+offset_bottom = 180.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = SubResource("Theme_24syf")
+text = "gravity"
+
+[node name="GravSlider" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 3.0
+offset_right = 335.0
+offset_bottom = 19.0
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 83.0
+offset_right = 354.0
+offset_bottom = 142.0
+theme = SubResource("Theme_nw8u0")
+text = "Apply Force"
+
+[connection signal="value_changed" from="Panel/GravSlider" to="." method="_on_grav_slider_value_changed"]
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
