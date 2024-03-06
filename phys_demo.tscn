@@ -33,7 +33,7 @@ position = Vector2(740, 171)
 
 [node name="Panel" type="Panel" parent="."]
 offset_right = 351.0
-offset_bottom = 180.0
+offset_bottom = 300.0
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
@@ -44,10 +44,10 @@ text = "gravity"
 
 [node name="GravSlider" type="HSlider" parent="Panel"]
 layout_mode = 0
-offset_left = 76.0
-offset_top = 3.0
-offset_right = 335.0
-offset_bottom = 19.0
+offset_left = 66.0
+offset_top = 4.0
+offset_right = 325.0
+offset_bottom = 20.0
 
 [node name="Button" type="Button" parent="Panel"]
 layout_mode = 0
@@ -58,5 +58,50 @@ offset_bottom = 142.0
 theme = SubResource("Theme_nw8u0")
 text = "Apply Force"
 
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = 156.0
+offset_right = 59.0
+offset_bottom = 182.0
+text = "Inerrtia:"
+
+[node name="Label3" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 191.0
+offset_right = 64.0
+offset_bottom = 217.0
+text = "Velocity (x, y):"
+
+[node name="txtInertia" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 152.0
+offset_right = 317.0
+offset_bottom = 185.0
+
+[node name="txtVelX" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 191.0
+offset_right = 219.0
+offset_bottom = 224.0
+
+[node name="txtVelY" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 190.0
+offset_right = 332.0
+offset_bottom = 223.0
+
+[node name="Button2" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 235.0
+offset_right = 344.0
+offset_bottom = 288.0
+text = "Apply Adjustments"
+
 [connection signal="value_changed" from="Panel/GravSlider" to="." method="_on_grav_slider_value_changed"]
 [connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Button2" to="." method="_on_button_2_pressed"]
