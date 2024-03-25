@@ -6,8 +6,8 @@ const MAXIMUM_OBTAINABLE_HEALTH = 400.0
 enum STATES { IDLE=0, DEAD, DAMAGED, ATTACKING, CHARGING }
 
 @export var data = {
-	"max_health": 60.0, # 20hp per heart; 5 per fraction
-	"health": 60.0,     # Min 60 Max 400
+	"max_health": 60.0,  # 20hp per heart; 5 per fraction
+	"health": 60.0,      # Min 60 Max 400
 	"money": 0,
 	"state": STATES.IDLE,
 	"secondaries": [],
@@ -26,7 +26,7 @@ func pickup_money(value):
 
 func pickup_health(value):
 	data.health += value
-	data.health = clamp(data.helth, 0, data.max_health)
+	data.health = clamp(data.health, 0, data.max_health)
 
 func _ready():
 	p_HUD.show()
