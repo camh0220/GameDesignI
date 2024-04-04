@@ -15,10 +15,10 @@ var state_directions = [
 	Vector2.DOWN,
 	Vector2.LEFT,
 	Vector2.RIGHT,
-	Vector2(-1, -1).normalized(), # UL
-	Vector2(1, -1).normalized(), # UR
-	Vector2(-1, 1).normalized(), # DL
-	Vector2(1, 1).normalized(), # DR
+	Vector2(-1, -1).normalized(),  # UL
+	Vector2(1, -1).normalized(),   # UR
+	Vector2(-1, 1).normalized(),   # DL
+	Vector2(1, 1).normalized(),    # DR
 	Vector2.ZERO,
 ]
 
@@ -35,24 +35,50 @@ var state_animations = [
 	"",
 ]
 
-var intertia = Vector2()
+var inertia = Vector2()
 var ai_timer_max = 0.5
 var ai_timer = ai_timer_max - randi() % 5
 var damage_lock = 0.0
 var animation_lock = 0.0
-var knockback = 120.0
+var knockback = 128.0
 var vision_distance = 50.0
 var money_value = 5.0
 
 signal recovered
 
 @onready var raycastR = $RayCast2DR
-@onready var raycastM = $RayCast20M
-@onready var raycastL = $RayCast20L
+@onready var raycastM = $RayCast2DM
+@onready var raycastL = $RayCast2DL
 
 @onready var anim_player = $AnimatedSprite2D
 
-func turn_toward_plauer_location(location: Vector2):
+var drops = ["drop_coin", "drop_heart"]
+
+var coin_scene = preload("res://entities/coin.tscn")
+var heart_scene = preload("res://entities/mini_heart.tscn")
+
+func vec2_offset():
+	return Vector2(randf_range(-10.0, 10.0), randf_range(-10.0, 10.0))
+
+func drop_scene(item_scene):
+	item_scene.global_position = self.global_position + vec2_offset()
+	get_tree().current_scene.add_child(item_scene)
+
+func drop_heart():
+	drop_scene(heart_scene.instantiate())
+
+func drop_coin():
+	var coin = coin_scene.instantiate()
+	coin.value = money_value
+	drop_scene(coin)
+
+func drop_items():
+	var num_drops = randi() % 3 + 1
+	for i in range(num_drops):
+		var rnd_drop = drops[randi() % drops.size()]
+		call_deferred(rnd_drop)
+
+func turn_toward_player_location(location: Vector2):
 	# Set the state to move toward the player
 	var dir_to_player = (location - self.global_position).normalized()
 	velocity = dir_to_player * (SPEED * 2)
@@ -66,7 +92,7 @@ func turn_toward_plauer_location(location: Vector2):
 			closest_angle = angle_dif
 			closest_state = STATES.values()[i]
 	AI_STATE = closest_state
-	
+
 func take_damage(dmg, attacker=null):
 	if damage_lock == 0.0:
 		AI_STATE = STATES.DAMAGED
@@ -75,16 +101,16 @@ func take_damage(dmg, attacker=null):
 		animation_lock = 0.2
 		# TODO: damage shader
 		if HEALTH <= 0:
-			# TODO: drop item
+			drop_items()
 			# TODO: play death sound
 			queue_free()
 		else:
 			if attacker != null:
 				var loc = attacker.global_position
 				await recovered
-				turn_toward_plauer_location(loc)
+				turn_toward_player_location(loc)
 	pass
-	
+
 func _physics_process(delta):
 	animation_lock = max(animation_lock - delta, 0.0)
 	damage_lock = max(damage_lock - delta, 0.0)
@@ -92,15 +118,27 @@ func _physics_process(delta):
 		var raydir = state_directions[int(AI_STATE)]
 		raycastM.target_position = raydir * vision_distance
 		raycastL.target_position = \
-			raydir.rotated(deg_to_rad(-45)).normalized()  * vision_distance
+			raydir.rotated(deg_to_rad(-45)).normalized() * vision_distance
 		raycastR.target_position = \
-			raydir.rotated(deg_to_rad(45)).normalized()  * vision_distance
+			raydir.rotated(deg_to_rad(45)).normalized() * vision_distance
 	if animation_lock == 0.0:
 		if AI_STATE == STATES.DAMAGED:
 			# TODO: reset shader
 			AI_STATE = STATES.IDLE
 			recovered.emit()
-			# TODO: damage player
+		for player in get_tree().get_nodes_in_group("Player"):
+			if $AttackBox.overlaps_body(player):
+				if player.damage_lock == 0.0:
+					var inert = (player.global_position-self.global_position)
+					player.inertia = inert.normalized() * knockback
+					player.take_damage(DAMAGE)
+				else:
+					continue
+			if player.data.state != player.STATES.DEAD:
+				if (raycastM.is_colliding() and raycastM.get_collider() == player) or \
+				   (raycastL.is_colliding() and raycastL.get_collider() == player) or \
+				   (raycastR.is_colliding() and raycastR.get_collider() == player):
+					turn_toward_player_location(player.global_position)
 		
 		ai_timer = clamp(ai_timer - delta, 0.0, ai_timer_max)
 		if ai_timer == 0.0:
@@ -110,7 +148,7 @@ func _physics_process(delta):
 			else:
 				AI_STATE = STATES.IDLE
 			ai_timer = ai_timer_max
-			
+		
 		var direction = state_directions[int(AI_STATE)]
 		velocity = direction * SPEED
 		
@@ -119,7 +157,8 @@ func _physics_process(delta):
 			anim_player.play(anim)
 		if AI_STATE == STATES.IDLE and anim_player.is_playing():
 			anim_player.stop()
-		velocity += intertia
+		
+		velocity += inertia
 		move_and_slide()
 		inertia = inertia.move_toward(Vector2(), delta * 1000.0)
 	pass
