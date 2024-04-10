@@ -24,9 +24,16 @@ var charge_start_time = 0.0
 var slash_scene = preload("res://zelda_like/Slash.png")
 var menu_scene = preload("res://my_gui.tscn")
 var damage_shader = preload("res://assets/shaders/take_damage.tres")
+var attack_sound = preload("res://assets/sounds/slash.wav")
+var chargeattack_sound = preload("res://assets/sounds/hitHurt.wav")
+var perks_sound = preload("res://assets/sounds/powerUp.wav")
 var menu_instance = null
 
+@onready var aud_player = $AudioStreamPlayer2D
 @onready var p_HUD = get_tree().get_first_node_in_group("HUD")
+# TODO: Add & preload sounds for attack, death, hurt, coin, miniheart, charge_attack
+# aud_player.stream = whatever_sound
+# aud_player.play()
 
 func get_direction_name():
 	return ["right", "down", "left", "up"][
@@ -44,6 +51,8 @@ func attack():
 	slash.position = attack_direction * 20.0
 	slash.rotation = Vector2().angle_to_point(-attack_direction)
 	add_child(slash)
+	aud_player.stream = attack_sound
+	aud_player.play()
 	animation_lock = 0.2
 
 func charged_attack():
@@ -60,6 +69,8 @@ func charged_attack():
 		slash.rotation = Vector2().angle_to_point(-dir)
 		slash.damage *= 1.5
 		add_child(slash)
+		aud_player.stream = chargeattack_sound
+		aud_player.play()
 		await get_tree().create_timer(0.03).timeout
 	animation_lock = 0.2
 	await $AnimatedSprite2D.animation_finished
@@ -68,10 +79,15 @@ func charged_attack():
 
 func pickup_money(value):
 	data.money += value
+	aud_player.stream = perks_sound
+	aud_player.play()
+	
 
 func pickup_health(value):
 	data.health += value
 	data.health = clamp(data.health, 0, data.max_health)
+	aud_player.stream = perks_sound
+	aud_player.play()
 	
 signal health_depleted
 

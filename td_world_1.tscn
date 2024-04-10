@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgqmx7plq8exv"]
+[gd_scene load_steps=8 format=3 uid="uid://bgqmx7plq8exv"]
 
 [ext_resource type="Texture2D" uid="uid://ofi7h2kt2i0p" path="res://zelda_like/Overworld.png" id="1_vr5o5"]
 [ext_resource type="PackedScene" uid="uid://bhblmdiiucfm3" path="res://td_player.tscn" id="2_o52a4"]
 [ext_resource type="PackedScene" uid="uid://cko848p2j81xl" path="res://td_enemy.tscn" id="3_m5mo6"]
 [ext_resource type="PackedScene" uid="uid://cguywn6kheyks" path="res://player_hud.tscn" id="4_w8uoq"]
+[ext_resource type="AudioStream" uid="uid://dvyhjyaqaouum" path="res://assets/sounds/overworld.mp3" id="5_sbamb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_033vl"]
 texture = ExtResource("1_vr5o5")
@@ -3182,3 +3183,8 @@ position = Vector2(-104, 14)
 position = Vector2(-191, 243)
 
 [node name="PlayerHUD" parent="." instance=ExtResource("4_w8uoq")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_sbamb")
+volume_db = -8.5
+autoplay = true
