@@ -16,7 +16,7 @@ enum STATES { IDLE=0, DEAD, DAMAGED, ATTACKING, CHARGING }
 var inertia = Vector2()
 var look_direction = Vector2.DOWN  # (0, 1)
 var attack_direction = Vector2.DOWN
-var animation_lock = 0.0 
+var animation_lock = 0.0  # Lock player while playing attack animation
 var damage_lock = 0.0
 var charge_time = 2.5
 var charge_start_time = 0.0
@@ -25,15 +25,14 @@ var slash_scene = preload("res://zelda_like/Slash.png")
 var menu_scene = preload("res://my_gui.tscn")
 var damage_shader = preload("res://assets/shaders/take_damage.tres")
 var attack_sound = preload("res://assets/sounds/slash.wav")
-var chargeattack_sound = preload("res://assets/sounds/hitHurt.wav")
-var perks_sound = preload("res://assets/sounds/powerUp.wav")
 var menu_instance = null
 
 @onready var aud_player = $AudioStreamPlayer2D
 @onready var p_HUD = get_tree().get_first_node_in_group("HUD")
-# TODO: Add & preload sounds for attack, death, hurt, coin, miniheart, charge_attack
+# TODO: Add & preload sounds - attack, death, hurt, coin, miniheart, charge_attack
 # aud_player.stream = whatever_sound
 # aud_player.play()
+
 
 func get_direction_name():
 	return ["right", "down", "left", "up"][
@@ -62,15 +61,13 @@ func charged_attack():
 	damage_lock = 0.3
 	for i in range(9):
 		# Offset by (i-4) * 45 degrees
-		var angle = -attack_direction.angle() + (i-4) * PI / 4 # [-4,4]
+		var angle = -attack_direction.angle() + (i-4) * PI / 4  # [-4,4]
 		var dir = Vector2(cos(angle), sin(angle))
 		var slash = slash_scene.instantiate()
 		slash.position = dir * 20
 		slash.rotation = Vector2().angle_to_point(-dir)
 		slash.damage *= 1.5
 		add_child(slash)
-		aud_player.stream = chargeattack_sound
-		aud_player.play()
 		await get_tree().create_timer(0.03).timeout
 	animation_lock = 0.2
 	await $AnimatedSprite2D.animation_finished
@@ -79,16 +76,11 @@ func charged_attack():
 
 func pickup_money(value):
 	data.money += value
-	aud_player.stream = perks_sound
-	aud_player.play()
-	
 
 func pickup_health(value):
 	data.health += value
 	data.health = clamp(data.health, 0, data.max_health)
-	aud_player.stream = perks_sound
-	aud_player.play()
-	
+
 signal health_depleted
 
 func take_damage(dmg):
@@ -117,7 +109,7 @@ func _ready():
 
 func _physics_process(delta):
 	animation_lock = max(animation_lock-delta, 0.0)
-	damage_lock = max(animation_lock-delta, 0.0)
+	damage_lock = max(damage_lock-delta, 0.0)
 	
 	if animation_lock == 0.0 and data.state != STATES.DEAD:
 		if data.state == STATES.DAMAGED and max(damage_lock-delta, 0.0):
@@ -145,7 +137,6 @@ func _physics_process(delta):
 	if data.state != STATES.DEAD:
 		if Input.is_action_just_pressed("ui_accept"):
 			attack()
-			# TODO: charge timer/state
 			charge_start_time = Time.get_time_dict_from_system().second
 			data.state = STATES.CHARGING
 		
@@ -156,8 +147,6 @@ func _physics_process(delta):
 				charged_attack()
 			else:
 				data.state = STATES.IDLE
-	
-	
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		menu_instance.show()
@@ -180,4 +169,4 @@ func update_animation(direction):
 			
 		$AnimatedSprite2D.animation = a_name
 		$AnimatedSprite2D.play()
-pass
+	pass
