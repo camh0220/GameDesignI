@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgqmx7plq8exv"]
+[gd_scene load_steps=12 format=3 uid="uid://bgqmx7plq8exv"]
 
 [ext_resource type="Texture2D" uid="uid://ofi7h2kt2i0p" path="res://zelda_like/Overworld.png" id="1_vr5o5"]
 [ext_resource type="PackedScene" uid="uid://bhblmdiiucfm3" path="res://td_player.tscn" id="2_o52a4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b1m11u68ab01p" path="res://change_lvl.tscn" id="6_bsa08"]
 [ext_resource type="PackedScene" uid="uid://dk1bipjx50c0g" path="res://entities/mini_heart.tscn" id="7_ms0qu"]
 [ext_resource type="PackedScene" uid="uid://bi16ino1k6x4u" path="res://entities/coin.tscn" id="7_po6f7"]
+[ext_resource type="PackedScene" uid="uid://bcaj57ph2pnme" path="res://entities/objects/Node2D.tscn" id="9_1sxyq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_033vl"]
 texture = ExtResource("1_vr5o5")
@@ -3207,5 +3208,8 @@ position = Vector2(-339, 2)
 
 [node name="mini_heart" parent="." instance=ExtResource("7_ms0qu")]
 position = Vector2(-372, 3)
+
+[node name="SmallChest" parent="." instance=ExtResource("9_1sxyq")]
+position = Vector2(116, -10)
 
 [editable path="change_lvl"]
