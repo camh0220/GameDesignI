@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://brh83n8ut0g1j"]
+
+[ext_resource type="Script" path="res://entities/attacks/slash.gd" id="1_rvehf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rifal"]
+radius = 8.14508
+
+[node name="slash" type="Area2D" groups=["Slash"]]
+script = ExtResource("1_rvehf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.713524, -0.178381)
+shape = SubResource("CircleShape2D_rifal")

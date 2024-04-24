@@ -153,6 +153,11 @@ animations = [{
 "name": &"idle_up",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7b775")
@@ -282,7 +287,7 @@ script = ExtResource("1_jlhg3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q0la6")
-animation = &"swipe_left"
+animation = &"new_animation"
 autoplay = "idle_down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
