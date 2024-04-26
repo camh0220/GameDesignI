@@ -1129,3 +1129,6 @@ position = Vector2(-22, 110)
 
 [node name="coin2" parent="." instance=ExtResource("6_36pa7")]
 position = Vector2(86, 65)
+
+[node name="td_enemy2" parent="." instance=ExtResource("3_olgsb")]
+position = Vector2(-63, -109)
