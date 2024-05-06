@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqwae0qr00nba"]
+
+[ext_resource type="Texture2D" uid="uid://dn4xfbh8vta1p" path="res://block.png" id="1_bkaud"]
+[ext_resource type="Texture2D" uid="uid://c3oqabk6pux17" path="res://zelda_like/brick.png" id="2_7llxg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lvsh1"]
+texture = ExtResource("1_bkaud")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pmyqe"]
+texture = ExtResource("2_7llxg")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_spngy"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_lvsh1")
+sources/2 = SubResource("TileSetAtlasSource_pmyqe")
+
+[node name="mario_world_1" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_spngy")
+format = 2
+layer_0/tile_data = PackedInt32Array(131071, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 2, 0, 65541, 2, 0, 65542, 2, 0, 131079, 2, 0, 131080, 2, 0, 131081, 2, 0, 131082, 2, 0, 131083, 2, 0, 131084, 2, 0, 131085, 2, 0, 65543, 2, 0, 65544, 2, 0, 65545, 2, 0, 65546, 2, 0, 65547, 2, 0, 65548, 2, 0, 65549, 2, 0, 131078, 2, 0, 131077, 2, 0, 131076, 2, 0, 131075, 2, 0, 131074, 2, 0, 131073, 2, 0, 131072, 2, 0, 196607, 2, 0, 262143, 2, 0, 196608, 2, 0, 196609, 2, 0, 196610, 2, 0, 196611, 2, 0, 196612, 2, 0, 196613, 2, 0, 196614, 2, 0, 196615, 2, 0, 196616, 2, 0, 196617, 2, 0, 196618, 2, 0, 196619, 2, 0, 196620, 2, 0, 196621, 2, 0)
