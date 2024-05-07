@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://mfgg1nv6yxjl"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_1120e"]
+[ext_resource type="Texture2D" uid="uid://cr5ac7pk5fhmb" path="res://Mario_Small_Idle.png" id="1_hvu80"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8paq4"]
+atlas = ExtResource("1_hvu80")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lou0s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8paq4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lldt6"]
+radius = 6.0
+height = 16.0
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_1120e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_lou0s")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_lldt6")
