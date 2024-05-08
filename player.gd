@@ -17,7 +17,7 @@ func _physics_process(delta):
 	else:
 		is_jumping = false
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		is_jumping = true
 		
@@ -38,4 +38,4 @@ func update_animation(direction):
 		animated_sprite_2d.flip_h = (direction < 0)
 		animated_sprite_2d.play("run")
 	else:
-		animated_sprite_2d.play("idle") # Video @ 12:02
+		animated_sprite_2d.play("idle")
