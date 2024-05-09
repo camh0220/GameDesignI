@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqwae0qr00nba"]
+[gd_scene load_steps=13 format=3 uid="uid://cqwae0qr00nba"]
 
 [ext_resource type="Texture2D" uid="uid://dn4xfbh8vta1p" path="res://block.png" id="1_bkaud"]
 [ext_resource type="Texture2D" uid="uid://c3oqabk6pux17" path="res://zelda_like/brick.png" id="2_7llxg"]
 [ext_resource type="PackedScene" uid="uid://mfgg1nv6yxjl" path="res://player.tscn" id="3_2t1y2"]
 [ext_resource type="Script" path="res://Enemy.gd" id="4_g32v3"]
 [ext_resource type="Texture2D" uid="uid://dequbr70aeb8q" path="res://Goomba_Walk1.png" id="4_j0ish"]
+[ext_resource type="Texture2D" uid="uid://bt2vxrsg50614" path="res://Goomba_Flat.png" id="5_qy5l1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lvsh1"]
 texture = ExtResource("1_bkaud")
@@ -26,12 +27,16 @@ sources/1 = SubResource("TileSetAtlasSource_lvsh1")
 sources/2 = SubResource("TileSetAtlasSource_pmyqe")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vh2fw"]
-size = Vector2(20, 21.5)
+size = Vector2(22, 19.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6fgs"]
 size = Vector2(26, 4)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7u6"]
+size = Vector2(14, 11.125)
+
 [node name="mario_world_1" type="Node2D"]
+metadata/_edit_horizontal_guides_ = []
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_spngy")
@@ -49,6 +54,7 @@ limit_bottom = 650
 [node name="Enemy" type="CharacterBody2D" parent="."]
 script = ExtResource("4_g32v3")
 speed = 2000.0
+deathSprite = ExtResource("5_qy5l1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 position = Vector2(477, 597)
@@ -56,13 +62,20 @@ scale = Vector2(1.3125, 1.29687)
 texture = ExtResource("4_j0ish")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-position = Vector2(477, 597)
+position = Vector2(477, 597.875)
 shape = SubResource("RectangleShape2D_vh2fw")
 
-[node name="WallDetector" type="Area2D" parent="."]
+[node name="WallDetector" type="Area2D" parent="Enemy"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/WallDetector"]
 position = Vector2(477, 597)
 shape = SubResource("RectangleShape2D_p6fgs")
 
-[connection signal="body_entered" from="WallDetector" to="Enemy" method="_on_wall_detector_body_entered"]
+[node name="PlayerDetector" type="Area2D" parent="Enemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/PlayerDetector"]
+position = Vector2(477, 590.563)
+shape = SubResource("RectangleShape2D_4m7u6")
+
+[connection signal="body_entered" from="Enemy/WallDetector" to="Enemy" method="_on_wall_detector_body_entered"]
+[connection signal="body_entered" from="Enemy/PlayerDetector" to="Enemy" method="_on_player_detector_body_entered"]

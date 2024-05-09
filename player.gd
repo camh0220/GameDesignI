@@ -39,3 +39,8 @@ func update_animation(direction):
 		animated_sprite_2d.play("run")
 	else:
 		animated_sprite_2d.play("idle")
+
+
+func _on_hitbox_body_entered(body):
+	if body.is_in_group("Enemy"):
+		get_tree().reload_current_scene()
