@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 var timer = 1.0
 var timerStarted : bool
+var is_alive = true
 
 func _ready():
 	add_to_group("Enemy")
@@ -29,6 +30,7 @@ func _on_wall_detector_body_entered(body):
 
 func _on_player_detector_body_entered(body):
 	if body.name == "player":
+		is_alive = false
 		die()
 	
 func die():

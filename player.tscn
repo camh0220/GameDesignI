@@ -1,11 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://mfgg1nv6yxjl"]
+[gd_scene load_steps=18 format=3 uid="uid://mfgg1nv6yxjl"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1120e"]
 [ext_resource type="Texture2D" uid="uid://cr5ac7pk5fhmb" path="res://Mario_Small_Idle.png" id="1_hvu80"]
+[ext_resource type="Texture2D" uid="uid://d15k0r75lqgaa" path="res://Mario_Small_Death.png" id="2_tbwtn"]
 [ext_resource type="Texture2D" uid="uid://b62uofb1kdxnx" path="res://Mario_Small_Jump.png" id="3_0r04r"]
 [ext_resource type="Texture2D" uid="uid://mv6bqv0p06fn" path="res://Mario_Small_Run1.png" id="4_yanln"]
 [ext_resource type="Texture2D" uid="uid://dagrnfhb448a4" path="res://Mario_Small_Run2.png" id="5_2w1hw"]
 [ext_resource type="Texture2D" uid="uid://bgomywccvon6o" path="res://Mario_Small_Run3.png" id="6_g4ivy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yabvp"]
+atlas = ExtResource("2_tbwtn")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8paq4"]
 atlas = ExtResource("1_hvu80")
@@ -29,6 +34,14 @@ region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lou0s"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yabvp")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8paq4")
@@ -76,9 +89,7 @@ script = ExtResource("1_1120e")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_lou0s")
-animation = &"run"
-frame = 2
-frame_progress = 0.280718
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -8)
@@ -98,5 +109,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="feet"]
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_ekamw")
+
+[node name="death_timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
