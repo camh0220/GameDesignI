@@ -1,5 +1,7 @@
 extends Node
 
+var player_lives = 3
+
 func spawn_mushroom(pos):
 	var MushroomScene = load("res://1upMushroom.png")
 	var mushroom = MushroomScene.instantiate()
