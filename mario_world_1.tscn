@@ -41,7 +41,7 @@ sources/0 = SubResource("TileSetAtlasSource_6sb1n")
 sources/3 = SubResource("TileSetScenesCollectionSource_3fsyp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vh2fw"]
-size = Vector2(22, 19.75)
+size = Vector2(22, 17.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6fgs"]
 size = Vector2(26, 4)
@@ -76,7 +76,7 @@ scale = Vector2(1.3125, 1.29687)
 texture = ExtResource("4_j0ish")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-position = Vector2(477, 597.875)
+position = Vector2(477, 598.875)
 shape = SubResource("RectangleShape2D_vh2fw")
 
 [node name="WallDetector" type="Area2D" parent="Enemy"]

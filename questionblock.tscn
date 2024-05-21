@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://questionblock.gd" id="1_ssw6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6d5y"]
-size = Vector2(16, 3)
+size = Vector2(16, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbfhd"]
 size = Vector2(16, 14)
@@ -13,7 +13,7 @@ size = Vector2(16, 14)
 script = ExtResource("1_ssw6b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6.5)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_s6d5y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
