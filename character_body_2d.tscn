@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6tgv5s0s08cn"]
+
+[ext_resource type="Texture2D" uid="uid://c4c2kpmgxk742" path="res://1upMushroom.png" id="1_atwxa"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_atwxa")

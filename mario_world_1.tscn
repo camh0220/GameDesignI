@@ -93,6 +93,6 @@ shape = SubResource("RectangleShape2D_4m7u6")
 
 [node name="coin_gui" parent="." instance=ExtResource("9_181q6")]
 
-[connection signal="body_entered" from="TileMap/questionblock" to="TileMap/questionblock" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/testing" to="TileMap/testing" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Enemy/WallDetector" to="Enemy" method="_on_wall_detector_body_entered"]
 [connection signal="body_entered" from="Enemy/PlayerDetector" to="Enemy" method="_on_player_detector_body_entered"]
