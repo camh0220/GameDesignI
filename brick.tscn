@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b344dat23b81x"]
+
+[ext_resource type="Script" path="res://Area2D.gd" id="1_2vuv0"]
+[ext_resource type="Texture2D" uid="uid://c3oqabk6pux17" path="res://zelda_like/brick.png" id="2_fqa1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tecod"]
+size = Vector2(16, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me63q"]
+size = Vector2(16, 13)
+
+[node name="brick" type="Area2D"]
+script = ExtResource("1_2vuv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_tecod")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fqa1d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_me63q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

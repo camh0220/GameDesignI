@@ -1,8 +1,16 @@
-extends BaseItem
+extends CharacterBody2D
 
-func _init():  super._init(1)
-func _ready(): super._ready()
+var speed = 30
+var direction = 1
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-func interact(player):
-	player.pickup_money(value)
-	remove()
+func _physics_process(delta):
+	move_and_slide()
+	velocity.y += gravity * delta
+	velocity.x = speed
+	
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("Player"):
+		queue_free()
+	else:
+			direction *= -1

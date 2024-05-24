@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://cjtyq8uv7vahg"]
+
+[ext_resource type="Texture2D" uid="uid://b6s1nryn3kjcv" path="res://zelda_like/objects.png" id="2_hpi63"]
+
+[sub_resource type="GDScript" id="GDScript_wid4t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sppa"]
+size = Vector2(11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc35p"]
+atlas = ExtResource("2_hpi63")
+region = Rect2(0, 64, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqixb"]
+atlas = ExtResource("2_hpi63")
+region = Rect2(17, 64, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpfw1"]
+atlas = ExtResource("2_hpi63")
+region = Rect2(34, 64, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vecm1"]
+atlas = ExtResource("2_hpi63")
+region = Rect2(51, 64, 17, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ina0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc35p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqixb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpfw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vecm1")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 6.0
+}]
+
+[node name="Coin" type="Area2D"]
+script = SubResource("GDScript_wid4t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -0.5)
+shape = SubResource("RectangleShape2D_6sppa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ina0r")
+animation = &"new_animation"
+frame = 1
+frame_progress = 0.614251
+
+[connection signal="body_entered" from="." to="." method="_on_Coin_body_entered"]
