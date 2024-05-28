@@ -12,7 +12,7 @@ func _ready():
 func _on_body_entered(body):
 	if body.is_in_group("Player") and state == State.UNBUMPED:
 		bump_block()
-
+		
 
 func bump_block():
 	state = State.BUMPED
@@ -22,13 +22,13 @@ func bump_block():
 	var timer = get_tree().create_timer(0.2)
 	await timer.timeout
 	return_to_original_position()
-
-
-
-
+	
+	
+	
+	
 func bump_upwards():
 	position.y -= 10
-
-
+	
+	
 func return_to_original_position():
 	position = original_position

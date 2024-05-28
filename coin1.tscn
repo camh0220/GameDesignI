@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwq1fn6xq7ewi"]
+[gd_scene load_steps=10 format=3 uid="uid://bwq1fn6xq7ewi"]
 
 [ext_resource type="Texture2D" uid="uid://b6s1nryn3kjcv" path="res://zelda_like/objects.png" id="1_pw2vn"]
+[ext_resource type="Script" path="res://coin1.gd" id="1_t8g5c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gs80k"]
 atlas = ExtResource("1_pw2vn")
@@ -39,21 +40,26 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhugn"]
+size = Vector2(8, 8)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ibcyc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba7pa"]
+size = Vector2(12, 12)
 
 [node name="Coin" type="CharacterBody2D"]
+script = ExtResource("1_t8g5c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_uampq")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-31, 6)
 shape = SubResource("RectangleShape2D_lhugn")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(0.5, 0.5)
+position = Vector2(4, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_ibcyc")
+position = Vector2(-4, -1)
+shape = SubResource("RectangleShape2D_ba7pa")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

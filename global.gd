@@ -12,7 +12,7 @@ func spawn_mushroom(pos):
 
 
 func spawn_coin(pos):
-	var CoinScene = load("res://entities/coin.tscn")
+	var CoinScene = load("res://coin1.tscn")
 	var coin = CoinScene.instantiate()
 	coin.global_position = pos
 	get_tree().root.add_child(coin)
