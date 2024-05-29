@@ -22,6 +22,7 @@ func bump_block():
 	var timer = get_tree().create_timer(0.2)
 	await timer.timeout
 	return_to_original_position()
+	queue_free()
 
 
 
