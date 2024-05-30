@@ -1,3 +1,83 @@
-[gd_scene format=3 uid="uid://ciws6l1igqghf"]
+[gd_scene load_steps=17 format=3 uid="uid://ciws6l1igqghf"]
+
+[ext_resource type="Texture2D" uid="uid://dn4xfbh8vta1p" path="res://block.png" id="1_x4dii"]
+[ext_resource type="Texture2D" uid="uid://c3oqabk6pux17" path="res://zelda_like/brick.png" id="2_ot4kx"]
+[ext_resource type="PackedScene" uid="uid://b344dat23b81x" path="res://brick.tscn" id="3_5836l"]
+[ext_resource type="PackedScene" uid="uid://ch6dukxhs747f" path="res://questionblock.tscn" id="4_qjwwf"]
+[ext_resource type="PackedScene" uid="uid://mfgg1nv6yxjl" path="res://player.tscn" id="5_ak000"]
+[ext_resource type="Script" path="res://Enemy.gd" id="6_w3l4i"]
+[ext_resource type="Texture2D" uid="uid://bt2vxrsg50614" path="res://Goomba_Flat.png" id="7_j2xna"]
+[ext_resource type="Texture2D" uid="uid://dequbr70aeb8q" path="res://Goomba_Walk1.png" id="8_274e4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ft8rw"]
+texture = ExtResource("1_x4dii")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11cu7"]
+texture = ExtResource("2_ot4kx")
+0:0/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0c5nm"]
+scenes/1/scene = ExtResource("3_5836l")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ptu11"]
+scenes/1/scene = ExtResource("4_qjwwf")
+
+[sub_resource type="TileSet" id="TileSet_k5u7h"]
+sources/0 = SubResource("TileSetAtlasSource_ft8rw")
+sources/2 = SubResource("TileSetAtlasSource_11cu7")
+sources/3 = SubResource("TileSetScenesCollectionSource_0c5nm")
+sources/4 = SubResource("TileSetScenesCollectionSource_ptu11")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oufpy"]
+size = Vector2(22, 17.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mtyh"]
+size = Vector2(26, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ms4t"]
+size = Vector2(18, 11.1255)
 
 [node name="mario_world_2" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_k5u7h")
+format = 2
+layer_0/tile_data = PackedInt32Array(2621440, 2, 0, 2621441, 2, 0, 2621442, 2, 0, 2621443, 2, 0, 2621444, 2, 0, 2621445, 2, 0, 2621446, 2, 0, 2621447, 2, 0, 2621448, 2, 0, 2621449, 2, 0, 2621450, 2, 0, 2621451, 2, 0, 2621452, 2, 0, 2621453, 2, 0, 2621454, 2, 0, 2621455, 2, 0, 2621456, 2, 0, 2621457, 2, 0, 2621458, 2, 0, 2555922, 2, 0, 2490386, 2, 0, 2490385, 2, 0, 2490384, 2, 0, 2490383, 2, 0, 2490382, 2, 0, 2490381, 2, 0, 2490380, 2, 0, 2490379, 2, 0, 2490378, 2, 0, 2490377, 2, 0, 2490376, 2, 0, 2490375, 2, 0, 2490374, 2, 0, 2490373, 2, 0, 2490372, 2, 0, 2490371, 2, 0, 2490370, 2, 0, 2490369, 2, 0, 2490368, 2, 0, 2555904, 2, 0, 2555905, 2, 0, 2555906, 2, 0, 2555907, 2, 0, 2555908, 2, 0, 2555909, 2, 0, 2555910, 2, 0, 2555911, 2, 0, 2555912, 2, 0, 2555913, 2, 0, 2555914, 2, 0, 2555915, 2, 0, 2555916, 2, 0, 2555917, 2, 0, 2555918, 2, 0, 2555919, 2, 0, 2555920, 2, 0, 2555921, 2, 0, 2621462, 0, 0, 2555926, 0, 0, 2490390, 0, 0, 2424854, 0, 0, 2424855, 0, 0, 2490391, 0, 0, 2555927, 0, 0, 2621463, 0, 0, 2621466, 0, 0, 2555930, 0, 0, 2490394, 0, 0, 2424858, 0, 0, 2359322, 0, 0, 2293786, 0, 0, 2293787, 0, 0, 2293788, 0, 0, 2359324, 0, 0, 2424860, 0, 0, 2490396, 0, 0, 2555932, 0, 0, 2621468, 0, 0, 2621467, 0, 0, 2555931, 0, 0, 2490395, 0, 0, 2424859, 0, 0, 2359323, 0, 0, 2621471, 0, 0, 2555935, 0, 0, 2490399, 0, 0, 2424863, 0, 0, 2359327, 0, 0, 2293791, 0, 0, 2228255, 0, 0, 2162719, 0, 0, 2162720, 0, 0, 2162721, 0, 0, 2228257, 0, 0, 2293793, 0, 0, 2359329, 0, 0, 2424865, 0, 0, 2490401, 0, 0, 2555937, 0, 0, 2621473, 0, 0, 2621472, 0, 0, 2555936, 0, 0, 2490400, 0, 0, 2424864, 0, 0, 2359328, 0, 0, 2293792, 0, 0, 2228256, 0, 0, 2621482, 2, 0, 2621483, 2, 0, 2621484, 2, 0, 2621485, 2, 0, 2621486, 2, 0, 2621487, 2, 0, 2621488, 2, 0, 2621489, 2, 0, 2621490, 2, 0, 2621491, 2, 0, 2621492, 2, 0, 2621493, 2, 0, 2555957, 2, 0, 2490421, 2, 0, 2490420, 2, 0, 2490419, 2, 0, 2490418, 2, 0, 2490417, 2, 0, 2490416, 2, 0, 2490415, 2, 0, 2490414, 2, 0, 2490413, 2, 0, 2490412, 2, 0, 2555948, 2, 0, 2555949, 2, 0, 2555950, 2, 0, 2555951, 2, 0, 2555952, 2, 0, 2555953, 2, 0, 2555946, 2, 0, 2490410, 2, 0, 2490411, 2, 0, 2555947, 2, 0, 2555954, 2, 0, 2555955, 2, 0, 2555956, 2, 0)
+
+[node name="player" parent="TileMap" instance=ExtResource("5_ak000")]
+position = Vector2(74, 583)
+
+[node name="Camera2D" type="Camera2D" parent="TileMap/player"]
+limit_left = 0
+limit_top = 0
+limit_bottom = 650
+
+[node name="Enemy" type="CharacterBody2D" parent="."]
+script = ExtResource("6_w3l4i")
+speed = 2000.0
+deathSprite = ExtResource("7_j2xna")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+position = Vector2(522, 517)
+scale = Vector2(1.3125, 1.29687)
+texture = ExtResource("8_274e4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+position = Vector2(522, 519)
+shape = SubResource("RectangleShape2D_oufpy")
+
+[node name="WallDetector" type="Area2D" parent="Enemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/WallDetector"]
+position = Vector2(522, 517)
+shape = SubResource("RectangleShape2D_3mtyh")
+
+[node name="PlayerDetector" type="Area2D" parent="Enemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/PlayerDetector"]
+position = Vector2(522, 511)
+shape = SubResource("RectangleShape2D_4ms4t")
+
+[connection signal="body_entered" from="Enemy/WallDetector" to="Enemy" method="_on_wall_detector_body_entered"]
+[connection signal="body_entered" from="Enemy/PlayerDetector" to="Enemy" method="_on_player_detector_body_entered"]
