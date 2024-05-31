@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqwae0qr00nba"]
+[gd_scene load_steps=20 format=3 uid="uid://cqwae0qr00nba"]
 
 [ext_resource type="Texture2D" uid="uid://oew3ly8ass7r" path="res://MysteryBlock.png" id="1_3kg5e"]
 [ext_resource type="Texture2D" uid="uid://dn4xfbh8vta1p" path="res://block.png" id="1_bkaud"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ch6dukxhs747f" path="res://questionblock.tscn" id="4_tf6xm"]
 [ext_resource type="PackedScene" uid="uid://wfkirx0srqok" path="res://enemy.tscn" id="9_5dvdr"]
 [ext_resource type="PackedScene" uid="uid://cddypn8j38ncx" path="res://coin_gui.tscn" id="9_181q6"]
+[ext_resource type="PackedScene" uid="uid://dk5qlkognpi26" path="res://big_enemy.tscn" id="10_6f4x8"]
 [ext_resource type="PackedScene" uid="uid://b344dat23b81x" path="res://brick.tscn" id="10_mvfgs"]
 [ext_resource type="PackedScene" uid="uid://b1m11u68ab01p" path="res://change_lvl.tscn" id="11_wxj61"]
 
@@ -76,7 +77,7 @@ position = Vector2(170, 64)
 next_level = "mario_world_2"
 
 [node name="CollisionShape2D" parent="change_lvl" index="0"]
-position = Vector2(3173.5, 407.563)
+position = Vector2(3172.75, 408)
 
 [node name="Sprite2D" parent="change_lvl" index="1"]
 visible = false
@@ -97,21 +98,24 @@ limit_bottom = 650
 [node name="Enemy" parent="." instance=ExtResource("9_5dvdr")]
 position = Vector2(429, 596)
 
+[node name="big_enemy" parent="." instance=ExtResource("10_6f4x8")]
+position = Vector2(177, 536)
+
 [connection signal="body_entered" from="interact" to="." method="_on_interact_body_entered"]
 [connection signal="body_entered" from="TileMap2/brick" to="TileMap2/brick" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222147" to="TileMap2/@Area2D@222147" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222148" to="TileMap2/@Area2D@222148" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222149" to="TileMap2/@Area2D@222149" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222150" to="TileMap2/@Area2D@222150" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222151" to="TileMap2/@Area2D@222151" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158549" to="TileMap2/@Area2D@158549" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158550" to="TileMap2/@Area2D@158550" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158551" to="TileMap2/@Area2D@158551" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158552" to="TileMap2/@Area2D@158552" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158553" to="TileMap2/@Area2D@158553" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="TileMap2/questionblock1" to="TileMap2/questionblock1" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222152" to="TileMap2/@Area2D@222152" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222153" to="TileMap2/@Area2D@222153" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222154" to="TileMap2/@Area2D@222154" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222155" to="TileMap2/@Area2D@222155" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222156" to="TileMap2/@Area2D@222156" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222157" to="TileMap2/@Area2D@222157" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222158" to="TileMap2/@Area2D@222158" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap2/@Area2D@222159" to="TileMap2/@Area2D@222159" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158554" to="TileMap2/@Area2D@158554" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158555" to="TileMap2/@Area2D@158555" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158556" to="TileMap2/@Area2D@158556" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158557" to="TileMap2/@Area2D@158557" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158558" to="TileMap2/@Area2D@158558" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158559" to="TileMap2/@Area2D@158559" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158560" to="TileMap2/@Area2D@158560" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@158561" to="TileMap2/@Area2D@158561" method="_on_body_entered" flags=18]
 
 [editable path="change_lvl"]
