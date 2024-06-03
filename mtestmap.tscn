@@ -1,0 +1,69 @@
+[gd_scene load_steps=17 format=3 uid="uid://dqiq3cswy5fac"]
+
+[ext_resource type="Script" path="res://mtestmap.gd" id="1_351h4"]
+[ext_resource type="PackedScene" uid="uid://cddypn8j38ncx" path="res://coin_gui.tscn" id="2_hfslq"]
+[ext_resource type="PackedScene" uid="uid://b1m11u68ab01p" path="res://change_lvl.tscn" id="3_qgyxw"]
+[ext_resource type="Texture2D" uid="uid://c3oqabk6pux17" path="res://zelda_like/brick.png" id="4_pn1ny"]
+[ext_resource type="Texture2D" uid="uid://dn4xfbh8vta1p" path="res://block.png" id="5_xkvxs"]
+[ext_resource type="PackedScene" uid="uid://ch6dukxhs747f" path="res://questionblock.tscn" id="6_htc0k"]
+[ext_resource type="PackedScene" uid="uid://b344dat23b81x" path="res://brick.tscn" id="7_6bn00"]
+[ext_resource type="PackedScene" uid="uid://mfgg1nv6yxjl" path="res://player.tscn" id="8_haban"]
+[ext_resource type="PackedScene" uid="uid://wfkirx0srqok" path="res://enemy.tscn" id="9_rqg5h"]
+[ext_resource type="PackedScene" uid="uid://dk5qlkognpi26" path="res://big_enemy.tscn" id="10_m4dy0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7kym"]
+size = Vector2(1148, 25)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_upc1d"]
+texture = ExtResource("4_pn1ny")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlpru"]
+texture = ExtResource("5_xkvxs")
+0:0/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_8a8pr"]
+scenes/1/scene = ExtResource("6_htc0k")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_oe4gi"]
+scenes/1/scene = ExtResource("7_6bn00")
+
+[sub_resource type="TileSet" id="TileSet_ik6r6"]
+sources/0 = SubResource("TileSetAtlasSource_upc1d")
+sources/1 = SubResource("TileSetAtlasSource_vlpru")
+sources/2 = SubResource("TileSetScenesCollectionSource_8a8pr")
+sources/3 = SubResource("TileSetScenesCollectionSource_oe4gi")
+
+[node name="mtestmap" type="Node2D"]
+script = ExtResource("1_351h4")
+
+[node name="coin_gui" parent="." instance=ExtResource("2_hfslq")]
+
+[node name="interact" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interact"]
+position = Vector2(574, 669)
+shape = SubResource("RectangleShape2D_j7kym")
+
+[node name="change_lvl" parent="." instance=ExtResource("3_qgyxw")]
+position = Vector2(1213, 377)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_ik6r6")
+format = 2
+layer_0/tile_data = PackedInt32Array(2621440, 0, 0, 2621441, 0, 0, 2621442, 0, 0, 2621443, 0, 0, 2621444, 0, 0, 2621445, 0, 0, 2621446, 0, 0, 2621447, 0, 0, 2621448, 0, 0, 2621449, 0, 0, 2621450, 0, 0, 2621451, 0, 0, 2621452, 0, 0, 2621453, 0, 0, 2621454, 0, 0, 2621455, 0, 0, 2621456, 0, 0, 2621457, 0, 0, 2621458, 0, 0, 2621459, 0, 0, 2555923, 0, 0, 2555922, 0, 0, 2555921, 0, 0, 2555920, 0, 0, 2555919, 0, 0, 2555918, 0, 0, 2555917, 0, 0, 2555916, 0, 0, 2555915, 0, 0, 2555914, 0, 0, 2555913, 0, 0, 2555912, 0, 0, 2555911, 0, 0, 2555910, 0, 0, 2555909, 0, 0, 2555908, 0, 0, 2555907, 0, 0, 2555906, 0, 0, 2555905, 0, 0, 2555904, 0, 0, 2490368, 0, 0, 2490369, 0, 0, 2490370, 0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap"]
+
+[node name="player" parent="TileMap/Sprite2D" instance=ExtResource("8_haban")]
+position = Vector2(21, 528)
+
+[node name="Camera2D" type="Camera2D" parent="TileMap/Sprite2D/player"]
+
+[node name="Enemy" parent="." instance=ExtResource("9_rqg5h")]
+position = Vector2(270, 613)
+
+[node name="big_enemy" parent="." instance=ExtResource("10_m4dy0")]
+position = Vector2(207, 616)
+
+[connection signal="body_entered" from="interact" to="." method="_on_interact_body_entered"]
