@@ -1,6 +1,6 @@
 extends Node
 
-var player_lives = 3
+var player_lives = 100 # Change back to 3 after testing levels. Maybe add a few more?
 var coins = 0
 
 
