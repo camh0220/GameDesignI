@@ -43,3 +43,6 @@ func die():
 	sprite_2d.texture = deathSprite
 	velocity.x = 0
 	timerStarted = true
+
+func _on_wall_detector_body_entered(body):
+	speed = -speed

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk5qlkognpi26"]
+[gd_scene load_steps=6 format=3 uid="uid://dk5qlkognpi26"]
 
 [ext_resource type="Script" path="res://big_enemy.gd" id="1_cs2u3"]
 [ext_resource type="Texture2D" uid="uid://dequbr70aeb8q" path="res://Goomba_Walk1.png" id="2_dfo8i"]
@@ -8,6 +8,9 @@ size = Vector2(14, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4bxqx"]
 size = Vector2(16, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epood"]
+size = Vector2(20, 4)
 
 [node name="big_enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_cs2u3")
@@ -28,5 +31,10 @@ shape = SubResource("RectangleShape2D_4bxqx")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-10, -7)
 target_position = Vector2(0, 20)
+
+[node name="WallDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector"]
+shape = SubResource("RectangleShape2D_epood")
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
