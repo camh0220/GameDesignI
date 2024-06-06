@@ -90,5 +90,20 @@ position = Vector2(429, 596)
 position = Vector2(177, 536)
 
 [connection signal="body_entered" from="interact" to="." method="_on_interact_body_entered"]
+[connection signal="body_entered" from="TileMap2/brick" to="TileMap2/brick" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42674" to="TileMap2/@Area2D@42674" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42675" to="TileMap2/@Area2D@42675" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42676" to="TileMap2/@Area2D@42676" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42677" to="TileMap2/@Area2D@42677" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42678" to="TileMap2/@Area2D@42678" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/questionblock1" to="TileMap2/questionblock1" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42679" to="TileMap2/@Area2D@42679" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42680" to="TileMap2/@Area2D@42680" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42681" to="TileMap2/@Area2D@42681" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42682" to="TileMap2/@Area2D@42682" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42683" to="TileMap2/@Area2D@42683" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42684" to="TileMap2/@Area2D@42684" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42685" to="TileMap2/@Area2D@42685" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap2/@Area2D@42686" to="TileMap2/@Area2D@42686" method="_on_body_entered" flags=18]
 
 [editable path="change_lvl"]
